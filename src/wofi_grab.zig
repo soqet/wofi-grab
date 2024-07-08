@@ -57,29 +57,6 @@ export fn init(mode: *c.mode, _: *c.map) void {
     }
 }
 
-// export fn init(mode: *c.mode, _: *c.map) void {
-//     const in = std.io.getStdIn();
-//     var bufIn = std.io.bufferedReader(in.reader());
-//     const bufferSize = 100;
-//     var buf: [bufferSize]u8 = undefined;
-//     while (bufIn.reader().readUntilDelimiterOrEof(&buf, '\n')) |scanned| {
-//         const line = scanned orelse break;
-//         const w = createWidget(globalAlloc, mode, line, line) orelse {
-//             std.debug.print("couldn't create widget\n", .{});
-//             unreachable;
-//         };
-//         const node = globalAlloc.create(widgetList.Node) catch |err| {
-//             std.debug.print("couldn't allocate memory: {any}\n", .{err});
-//             unreachable;
-//         };
-//         node.data = w;
-//         widgets.append(node);
-//     } else |err| {
-//         std.debug.print("couldn't read from stdin: {any}\n", .{err});
-//         unreachable;
-//     }
-// }
-
 export fn get_widget() ?*c.widget {
     const n = widgets.pop() orelse return null;
     defer globalAlloc.destroy(n);
