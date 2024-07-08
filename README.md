@@ -12,4 +12,8 @@ mv zig-out/lib/libwofi-grab.so ~/.config/wofi/plugins/wg.so
 bash grab_window.sh
 ```
 
+## Dependencies
+
+1. zig
+2. jq (only used in bash script)
 
