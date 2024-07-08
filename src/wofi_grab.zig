@@ -67,7 +67,7 @@ export fn get_widget() ?*c.widget {
 export fn exec(cmd: *c_char) void {
     const sCmd: [*:0]u8 = @ptrCast(cmd);
     std.io.getStdOut().writer().print("{s}", .{sCmd}) catch |err| {
-        std.debug.print("can't use stdin: {any}", .{err});
+        std.debug.print("couln't write to stdout: {any}", .{err});
         unreachable;
     };
     c.wofi_exit(0);
